@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "ThirdViewController";
+}
+@model List<string>
+@{ 
+    var currentModel = Model.GroupBy(x => x.Substring(0, 1)).ToList();
+    foreach(var letter in currentModel)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @letter.Key
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(int i=0; i<letter.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            @letter.ElementAt(i)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
